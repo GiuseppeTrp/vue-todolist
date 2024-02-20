@@ -1,40 +1,29 @@
-const {createApp} = Vue;
+const { createApp } = Vue;
 
 createApp({
     data() {
         return {
-
             newTask: '',
-
             tasks: [
-                "Fare la spesa",
-                "Pagare il commercialista",
-                "Comprare l'ammorbidente"
+                { text: 'Lino Sasso', done: true },
+                { text: 'Rino Manda', done: true },
+                { text: 'Dario Lampa', done: false },
+                { text: 'Felice Trapasso', done: true },
+                { text: 'Daria Camera', done: false }
             ],
-
         }
     },
 
     methods: {
-
         deleteTask(taskIndex) {
-            // elimino dall'array tasks l'elemento che corrisponde all'indice riportato nel parametro
-
             this.tasks.splice(taskIndex, 1);
-
         },
 
         addTask() {
-
-            // aggiungo il testo scritto dentro il campo di input alla lista dei task
-            // testo del campo di input:
-            // console.log(this.newTask)
-
-            this.tasks.push(this.newTask)
-
-            // cancello il contenuto del campo di input
+            this.tasks.push({
+                text: this.newTask, 
+                done: false });
             this.newTask = "";
-
         },
     },
 
