@@ -20,6 +20,7 @@ createApp({
         },
 
         addTask() {
+            if(this.newTask.trim()!== "")
             this.tasks.push({
                 text: this.newTask, 
                 done: false });
