@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+</head>
+<body>
+    <!-- VUE 3 -->
+    <script src="https://unpkg.com/vue@3"></script>
+
+    <div id="app" class="container py-5">
+        
+        <h1 class="mb-5">
+            To-do list
+        </h1>
+
+        <div id="tasks-container" class="mb-5">
+            <!--
+                operatori ternari:
+                scrivere un if() in una sola riga
+                in questo modo possiamo fare dei controlli e scrivere dei dati anche negli
+                attributi dei nostri elementi html direttamente da qui
+        
+            -->
+            <ul
+                v-if="tasks.length > 0" 
+                class="list-group"
+            
+                style="border: solid 6px transparent;"
+                :style="
+                    {
+                        borderColor: tasks.length > 4 ? 'red' : 'transparent',
+                        borderWidth: tasks.length + 'px',
+                    }
+                "
+            >
+            
+                <li v-for="(currentTask, index) in tasks" class="task list-group-item d-flex justify-content-between align-items-center">
+                    {{ currentTask }}
+                    <i @click="deleteTask(index)" class="fa-regular fa-square-check"></i>
+                </li>
+            </ul>
+
+            <div v-else class="bg-success p-3 text-white rounded-2 ">
+                Hai completato i task per oggi ☀️
+            </div>
+
+        </div>
+
+
+        <div id="add-task" class="py-4 ">
+            <div class="input-group mb-3">
+                <span class="input-group-text">Inserisci un nuovo task</span>
+                <input 
+                    v-model="newTask"
+                    type="text" 
+                    class="form-control" 
+                    placeholder="Testo del task" 
+                    aria-label="Testo del task" 
+                    aria-describedby="add-task"
+                >
+                <button 
+                    class="btn btn-outline-secondary" 
+                    type="button" 
+                    id="add-task"
+                    @click="addTask()"
+                >
+                    Aggiungi
+                </button>
+            </div>
+        </div>
+        
+
+    </div>
+
+    <script src="js/script.js">
+        
+    </script>
+
+
+    <!-- bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+</body>
+</html>
