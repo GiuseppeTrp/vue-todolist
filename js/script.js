@@ -25,6 +25,15 @@ createApp({
                 done: false });
             this.newTask = "";
         },
+
+        toggleDone(task) {
+            task.done = !task.done;
+        }
+    
+        
     },
+
+       
+    
 
 }).mount("#app");
